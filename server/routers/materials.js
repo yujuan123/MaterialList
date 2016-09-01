@@ -1,35 +1,40 @@
 import express from 'express';
 import Materials from '../models/Materials';
-let router = express.Router();
-//得到数据
-router.get('/', (req,res)=> {
+const router = express.Router();
+
+//得到原始数据
+router.get('/',(req,res)=>{
   Materials.find((err,data)=>{
-    res.send(data);
+    if(res.status===200){
+      res.send(data);
+    }
   })
 });
 
-//保存数据
-router.post('/',(req,res) => {
+//添加数据
+router.post('/',(req,res)=>{
   new Materials({
-    source:req.body.source,
-    amount:req.body.amount
+    source:req.body.data.source,
+    amount:req.body.data.amount
   }).save((err,material)=>{
     if(err){
-      next(err);
+      return next(err);
     }else{
-      res.send(material);//数据库的数据返回
+      res.send(material);
     }
   })
 });
 
 //删除数据
 router.delete('/:id',(req,res)=>{
-  Materials.findByIdAndRemove(req.params.id,(err) =>{
-    res.send({
-      error:err
-    })
+  Materials.findByIdAndRemove(req.params.id,(err,doc)=>{
+    if(err){
+      res.send({
+        error:err
+      })
+    }
   })
 });
 
+//因为被导入时 require
 module.exports = router;
-//export default router;
