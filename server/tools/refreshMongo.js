@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import rawData from './fixture/raw-data';
-import Todo from '../models/Todo';
+import Materials from '../models/Materials';
 
 const modelsMap = {
-  Todo
+  Materials
 };
 
 let docs = Object.keys(rawData);

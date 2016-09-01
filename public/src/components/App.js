@@ -1,17 +1,19 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import Logo  from './Logo';
 import SliderPicture from './SliderPicture';
-import AddTodo from '../container/AddTodo';
-import ResultList from './ResultList';
 
+
+//导入 “被包装” 的  AddMaterialPackage
+import AddMaterialPackage from '../container/AddMaterialPackage';
+import DisplayListPackage  from './DisplayList';
 class App extends Component {
 
   render() {
     return (
         <div>
           <Logo/>
-          <AddTodo/>
-          <ResultList/>
+          <AddMaterialPackage/>
+          <DisplayListPackage />
         </div>
     );
   }

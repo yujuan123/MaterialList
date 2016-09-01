@@ -1,21 +1,8 @@
-const result = (state = [], action)=> {
-
+const result = (state = [],action)=>{
   switch (action.type) {
-    case 'ADD_MATERIAL':
-        return [
-            ...state,
-            action.data
-        ];
-
-      break;
-    case 'DELETE_MATERIAL':
-      return state.filter((v,k)=>{
-        return k !== action.id;
-      });
-    case 'INIT':
-        return state;
+    case 'MATERIAL_UPLOADED'://谁抛出的？是中间件抛出的
+      return action.data;
   }
   return state;
 };
-
 export default result;
