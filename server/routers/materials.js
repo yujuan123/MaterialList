@@ -14,8 +14,8 @@ router.get('/',(req,res)=>{
 //添加数据
 router.post('/',(req,res)=>{
   new Materials({
-    source:req.body.data.source,
-    amount:req.body.data.amount
+    source:req.body.source,
+    amount:req.body.amount
   }).save((err,material)=>{
     if(err){
       return next(err);
