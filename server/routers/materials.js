@@ -1,10 +1,10 @@
 import express from 'express';
-import Materials from '../models/Materials';
+import Material from '../models/Material';
 const router = express.Router();
 
 //得到原始数据
 router.get('/',(req,res)=>{
-  Materials.find((err,data)=>{
+  Material.find((err,data)=>{
     if(res.status===200){
       res.send(data);
     }
@@ -13,13 +13,15 @@ router.get('/',(req,res)=>{
 
 //添加数据
 router.post('/',(req,res)=>{
-  new Materials({
+  console.log(req.body);
+  new Material({
     source:req.body.source,
     amount:req.body.amount
   }).save((err,material)=>{
     if(err){
       return next(err);
     }else{
+      console.log(material);
       res.send(material);
     }
   })
@@ -27,7 +29,7 @@ router.post('/',(req,res)=>{
 
 //删除数据
 router.delete('/:id',(req,res)=>{
-  Materials.findByIdAndRemove(req.params.id,(err,doc)=>{
+  Material.findByIdAndRemove(req.params.id,(err,doc)=>{
     if(err){
       res.send({
         error:err

@@ -1,5 +1,5 @@
 export default {
-  Materials: [
+  Material: [
     {
       source:'aaa',
       amount:'123'

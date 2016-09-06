@@ -4,8 +4,11 @@ import request from 'superagent';
 const resultListMiddleware = store=>next=>action=> {
   switch (action.type){
     case 'ADD_MATERIAL'://保存数据并交给 下一个next(action)
+        console.log(action.data);
       request.post('/materials')
-          .send(action.data)
+          .type('form')
+          .send({source:action.data.source,
+                amount:action.data.amount})
           .end((err,res)=>{
             store.dispatch({
               type:'INIT'

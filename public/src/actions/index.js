@@ -9,4 +9,4 @@ export const deleteMaterial = (id)=>{
     type:'DELETE_MATERIAL',
     id
   }
-};
+};  

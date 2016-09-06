@@ -3,7 +3,7 @@ const result = (state=[],action)=>{
   switch (action.type){
     case 'MATERIAL_LOADED':
       return action.data;
-    return state;
   }
+  return state;
 };
 export default result;
