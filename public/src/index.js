@@ -1,14 +1,14 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import {render} from 'react-dom';
-import App from './components/App';
+import MaterialApp from './components/MaterialApp';
 import resultList from './reducers';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 //引入中间件
-import modifyMaterialMiddleware from './middlewares/modifyMaterialMiddleware';
+import resultListMiddleware from './middlewares/resultListMiddleware';
 const store = createStore(
     resultList,
-    applyMiddleware(modifyMaterialMiddleware)
+    applyMiddleware(resultListMiddleware)
 );
 
 store.dispatch({
@@ -17,7 +17,7 @@ store.dispatch({
 
 render(
     <Provider store={store}>
-      <App/>
+      <MaterialApp/>
     </Provider>,
     document.getElementById('app')
 );
