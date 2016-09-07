@@ -5,9 +5,8 @@ const router = express.Router();
 //得到原始数据
 router.get('/',(req,res)=>{
   Material.find((err,data)=>{
-    if(res.status===200){
-      res.send(data);
-    }
+    console.log(err);
+    res.send(data);
   })
 });
 
@@ -29,12 +28,8 @@ router.post('/',(req,res)=>{
 
 //删除数据
 router.delete('/:id',(req,res)=>{
-  Material.findByIdAndRemove(req.params.id,(err,doc)=>{
-    if(err){
-      res.send({
-        error:err
-      })
-    }
+  Material.findByIdAndRemove(req.params.id,(err)=>{
+    res.send(err);
   })
 });
 
